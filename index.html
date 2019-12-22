@@ -4,37 +4,90 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Reity">
-    <meta name="author" content="">
+    <meta name="author" content="Reity">
     <title>Reity</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" 
+            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
+            crossorigin="anonymous"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
     <style>
-      body { background-color:#FFE500; font-family:'Libre Baskerville',serif; }
-      h1 { font-size:25px; color:#444444; }
-      div { position:absolute; right:60px; bottom:40px; }
-      a { color:#444444; }
+      body { background-color:#FFEB3B; font-family:'Libre Baskerville',serif; } /* #FFE500 */
+      h1 { font-size:42px; color:#444444;  cursor:default; }
+      body > div { position:absolute; right:60px; bottom:40px; }
+      a { color:#212121; }
       a:hover { color:#FFFFFF; }
-      span { cursor:default; }
+      span { }
+      .sep { margin:0px -8px 0px -8px; }
+      table tr td { padding: 1px 1px 1px 2px; line-height:6px; font-size:10px; }
+      .one { color:#212121; }
+      .two { color:#98695B; } /* #795548 #916F6F */
+      #logo-phonetic { font-size:30px; }
+      #logo-orthographic { font-size:35px; font-weight:bold; }
     </style>
     <script>
-      var favIcon = "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAATYSURBVHjaYvz/xJbh32cGGgEmXoAAYmH4+57h/3daWfD/D0AAMTEwsjDQDjCyAAQQEwONAUAA0dwCgACiuQUAAURzCwACiEQLGMGIFAAQQKQkIZb/DP+BFvxn+McIQsQBgAAiwYInD3h375Pm5f3l7vqEl+c3kboAAoiFeOfv2S91/IQoI9N/SfHv1rbPGf4S5QmAAGIiNugZGIQEfzIx/+fg+MfL94uB7S+RDgMIIKJ9wPhfWemTkcFbLq6/4mLfGf4TGwcAAcSCxbEsjCDyNzAyGRiY/4MQOFbV1D4IiPxgY/0nIviT4Q8TAytY2Z//DH/BWpgZQIw/YPVM/0FG/QUFD0AAMWGG2f6D35at/vzt+38G9v/Pn3Ef3i/16AEvMP2wsv2TlvsiKvGNkZHh/z/GPQdAyj5//sfAyXjn7q+Fyz/dvfeLgZPh00e2IwelLl0Q+fsX5AKAAEL1ATfTpo2fg9Je/P3HkJfI21ohO3+h+uMnXGJiPwpyrwiKfGf4wQxSxsW4b/c395hn//4z1OYJlecL+CS/uHn3l4Yy65EN0ru2qR08IsrC/D8q/K6V42eAAEL1ATPD0+d/gaYDwYPHf358Yf7wkY2R8f/nLyw/IUZDfcn46u3ff+BgePzsz69v/+8/AqXauw9/f/n8/+MnNiD75y+mDx/ZgT4ACCDmhkIJhv+/wIHIyPCLQUOVjZuDUUWBtb5QWFbxnyDvLwZGRke7F2rqH5kgeQ0UPQzyMqwcbIzqSqwl6QKyimya8sycHP+rcwQtrTiEBX5+/cKqq/PeweE5BzsLQACeqe0IYBgEiXlt0v1HyhxqTLTp9ZMPODgAez6EZUphaQz8o8zTvh5FSo9RIqEIM1OtHlW5ka3dg5KJocqtef78cj+RcgQQEwMz15df/w+f/r7z4Lc3H/+B/MEGTiEsjECNL15yXbws/PwF9z+m/58+s12+InTzlsCvP8w//v4/cf7HrsPfX336+5+J4flLnkuXRZ6/4gHZxfwPZDowIQEtY+ICCCCQWbdv/06vep1Q/OrAke+g1PbzH8MvYOL79/s389btsstXKm7cLAdkX70quGyl8so1im9fcz998iu++FVk7svde77+Y2TZuElm6QpFIAmKqn9gz8LKK4AAYgImibXbvty+//v9p39zVnyC+u4/KAe8fc1x+Yrgnz+MN27xv3vJCXT7t+8sr15xPHvGf/L8tzsPfn/5+m/tji+f3rDfusP/9y/DjRsCr15wg/IBMBv+hyYIgABiYvj6PyKAV1+TTUyYOSeeHxi44DAFZhlGYJI3N33NwsKgp/NeRPKbrs5bHu7f0tLf5OXf2Zhz62uxCfEzxwby8Yv+0NZ8z8jEoKvzTlzyK1oZBRBAjP8fGjCwffny/u+3b//FpFkYfv5HSo7///1hev2aU0TkBzMwnv8xvn7Fyc7+l0/gJwMz09eP/75+/ycmAWyX/Pv1k/nVK2B2+cbG8RfFAiZegABi/P/IANQuAsYtE7h4wCiC4EUFKOiAEQj0PsQIZlCGgGphAiv7i1FPMPECBBAsJ/8FFylYGjaMwLCCsRlARRAc/AXrggDcVRBAANG8TgYIIJpbABBANLcAIIBobgFAADEB26c0NP7/H4AAYmFgFmT4R7P2LxMvQIABAL065VvDdsFkAAAAAElFTkSuQmCC";
+      var favIcon = "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAATPSURBVHjaYvz/PJyBlgAggJgYaAwAAojmFgAEEM0tAAggmlsAEEA0twAggFhQeP8ZEWzG/1SxACCAUH0ANxTTdKDdQMQIRqQAgABiQRfA43DmfxCrGBiZGP4RawFAALEQ75bnDz/t2MHEy/vLy0+Yi5ORyGAECCDiLAAGDvO/nTsZL+7nZmTkkhJ7bOUiw/CXCRxoBOwACCAmokwHqxIS/MnE9J+T/S+PwF8G1j9E+hsggFgYGDkZ/n/HpwTkRqAd/1WUv741Yebk/ictJ4liPV5PAAQQI7Sww6oOFDL/GZj+MfwDhfifX4xv339jY2UXEGBhBAoygrX8BUc4SNl/kLK/YC2QNPCfmYGBAyCAmFASDzg0Dh48uWzVgR8//zGw/n397OvR7Y+fPvgAVMHCxiAuwyoo+h9oMtC8vXtPLFt28Nv3Pwzsfx89fLVw0YFHj14D2V8/MxzZ8+zSmUf//jIwMDECBBBqJHP+3bT2SFDa87//GPIu7Oho9F088duzR9IiEr+y6v/yCTAy/GQFKeP4s3/Habeoh//+M9Te3VdV5uwWefTm3V8ayodP7vTZuvbHmZ0SLMz/AxIfWrorAwQQE2po/n76/M9fsP8ePP7z88uvTx9YGRn/f/nM/OvHLySH/Hv5+sc/sJ8fP/vz+8e/+49+A9l3H/7+8vX7x09sQPbP30wfP4AYAAHE3FBqyvD/LwMwuIDoD4u2tjwXywsVBdbWKlMJOR5e3sdAc6xc3qloizKCohoY9CBlSspybIwv1JVYqwoMJGT4NGVfc3L8r84RNLdUFRP68PnjHw3DLw6+Yuxs7AABqCZzAwBAEAYiiEO6/xZCFHwKK0iRIjkIyJ0K3AiAtv9qd5RhpFEkpxyeUyRlVOwTWu9XG0oNzvyMZ5m8BBATAzP7999/jxw9sX3noY9ffoJim/UfCDH9Byp78+bbhdMPX7/6/o/p39dv/y6dvn/zyoPffxl//f97+sz5nbuPvP/yE5hYXr36evHUw1evv4LsYgS7gvEfyChGNoAAAlrw7+7Nu6kVTxOKX+3edZyB5T/DL0YQAqbAv4zbVnzbNE9s05Jvf38zXT71aMN8yY2LRN+//vTy2duY/HuROS+2bTkCNGbL4u8b5ooByd8/QEmH4T84yQJt+/8dIICYGNh/rthw//b93+8//Zuz4hOiFGP69+71p5vnef78Ybx3jfv9y893r/F8/8b85gXbk7ufDx+9cOcBMEr/rd3x5cu7P/dv8vz9y3D3Ku/rp69A8YQEAAKIieEnR1yElr4mm5gwc068ACi/QMAfJmFxXgPrjywsDBpGX4UkeTQNPnLz/JGQ/aGkKeTkaKavxSbEzxwbyMcjxKym+xlYwmoYfBKTFWf4hxKRAAHE+P9FAgPrt++f/n3//ktInAMUOEi2//vD+P7NN0ERbiaWv8AYe//mBxs7GzcfKEH9+Prv24+fQsLAkobh98//b5+/F5YUZGVnAOVtpEIBIIDAFvz7AcrfoPSHrcBgAqeJv+AiDxiBQHV/wW6Ea4GwQSUKWBmqCQABxIKcIhFy/5GK+7/MSGqY0RIxVA2QDQkZDPcBBBALqChlZMBXr1FWOQMEEM1bFQABRHMLAAKI5hYABBDNLQAIIJpbABBgACd2/saHFh8iAAAAAElFTkSuQmCC";
       var docHead = document.getElementsByTagName('head')[0];
       var newLink = document.createElement('link');
       newLink.rel = 'shortcut icon';
       newLink.type = 'image/x-icon';
       newLink.href = 'data:image/png;base64,'+favIcon;
       docHead.appendChild(newLink);
+      
+      function init() {
+        $("#logo-phonetic").hide();
+        $("#logo-orthographic").hide();
+        $("#logo-ideographic").show();
+        $("#logo").hover(function() {
+          $("#logo-orthographic").toggle();
+          $("#logo-ideographic").toggle();
+        });
+      }
     </script>
   </head>
-  <body>
+  <body onload="init();">
     <div>
       <h1>
-         <span>reity (<b>rā</b>-ə-tē)</span>
-         <span style="color:#999999;">|</span>
-         <a href="https://github.com/reity"><i style="font-size:22px;" class="fa fa-github"></i></a>
-         <span style="color:#999999;">|</span>
-         <a href="https://www.linkedin.com/company/reity"><i style="font-size:26px;" class="fa fa-linkedin"></i></a>
+        <div id="logo" style="display:inline-block;">
+          <span id="logo-orthographic">
+              <span class="one">r</span><span class="two">e</span><span class="two">i</span><span class="one">t</span><span class="two">y</span>
+          </span>
+          <span id="logo-phonetic">
+              <span class="one"><b>r</b></span><span class="two"><b>ā</b></span><span style="color:#DFCA4C;">&middot;</span><span class="two">ə</span><span style="color:#DFCA4C;">&middot;</span><span class="one">t</span><span class="two">ē</span>
+          </span>
+          <table id="logo-ideographic">
+            <tr>
+                <td></td><td></td><td></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+                <td></td><td></td><td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+                <td></td>
+                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            </tr>
+            <tr>
+                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+                <td></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+                <td></td>
+            </tr>
+          </table>
+        </div>
+        <div style="display:inline-block;">
+          <span class="sep" style="color:#DFCA4C;">|</span>
+          <a href="https://github.com/reity"><i style="font-size:37px;" class="fa fa-github"></i></a>
+          <span class="sep" style="color:#DFCA4C;">|</span>
+          <a href="https://www.linkedin.com/company/reity"><i style="font-size:44px;" class="fa fa-linkedin"></i></a>
+        </div>
       </h1>
     </div>
   </body>

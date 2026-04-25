@@ -13,29 +13,33 @@
       html, body { height:100%; }
       body { padding:40px; background-color:#FFEB3B; font-family:"Bitcount Prop Double",sans-serif; color:#212121; }
       .corner { position:fixed; bottom:0;  }
-      #navigation { left:0; margin-bottom:-16px; padding:0px 0px 0px 34px; font-size:52px; }
+      #navigation { left:0; margin-bottom:-14px; padding:0px 0px 0px 34px; font-size:54px; }
       #navigation .one { color:#212121; }
       #navigation .two { color:#98695B; }
-      #navigation > #logo { display:inline-block; height:52px; width:150px; }
+      #navigation > #logo { display:inline-block; height:52px; width:152px; }
       #navigation > #logo > #orthographic { margin:0px 0px 0px 6px; }
       #navigation > #logo > #ideographic { margin-top:4px; }
       #navigation > #logo > #ideographic tr td { padding:1px 1px 1px 1px; line-height:12px; font-size:14px; }
       #navigation > #categories { display:inline-block; padding-bottom:20px; }      
-      #links { right:0; padding:38px 30px 16px 32px; text-align:right; }
-      .link { margin-left:-5px; margin-right:-2px; font-size:40px; }
-      .link > a > i { color:#212121; }
-      .link:hover > a > i { color:#FFFFFF; text-shadow:0 0 2px #000000, 0 0 2px #000000; }
+      #links { right:0; padding:38px 30px 16px 32px; text-align:right; white-space:nowrap; }
+      .link { display:inline-block; margin:0px -2px 0px -5px; font-size:40px; }
+      .link > a { color:#212121; text-decoration:none; }
+      .link:hover > a { color:#FFFFFF; text-shadow:0 0 2px #000000, 0 0 2px #000000; }
       .noselect {
-        -webkit-touch-callout:none; /* iOS Safari */
-          -webkit-user-select:none; /* Safari */
-           -khtml-user-select:none; /* Konqueror HTML */
-             -moz-user-select:none; /* Old versions of Firefox */
-              -ms-user-select:none; /* Internet Explorer/Edge */
-                  user-select:none; /* Non-prefixed version */
+        -webkit-touch-callout:none;
+          -webkit-user-select:none;
+           -khtml-user-select:none;
+             -moz-user-select:none;
+              -ms-user-select:none;
+                  user-select:none;
       }
       @media all and (max-width:700px) {
-        #logo { padding:38px 42px 16px 34px; font-size:36px;  }
-        #links { font-size:26px; }
+        #navigation { padding:0px 0px 0px 30px; font-size:40px; }
+        #navigation > #logo { width:112px; }
+        #navigation > #logo > #ideographic { margin-top:13px; }
+        #navigation > #logo > #ideographic tr td { line-height:10px; font-size:10px; }
+        #navigation > #categories { padding-bottom:26px; }
+        .link { font-size:30px; }
       }
     </style>
     <script>

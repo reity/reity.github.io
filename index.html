@@ -5,27 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="Reity">
     <meta name="author" content="Reity">
-    <title>Reity</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" 
-            integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg=="
-            crossorigin="anonymous"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" rel="stylesheet">
-    <link href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <title>reity.org</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bitcount+Prop+Double&display=auto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/dist/css/bootstrap.min.css">
     <style>
-      body { background-color:#FFEB3B; font-family:'Libre Baskerville',serif; } /* #FFE500 */
-      h1 { font-size:42px; color:#444444;  cursor:default; }
-      body > div { position:absolute; right:60px; bottom:40px; }
-      a { color:#212121; }
-      a:hover { color:#FFFFFF; }
-      a > i { font-size:33px; }
-      span { }
-      .sep { margin:0px -8px 0px -8px; }
-      table tr td { padding: 1px 1px 1px 2px; line-height:6px; font-size:10px; }
-      .one { color:#212121; }
-      .two { color:#98695B; } /* #795548 #916F6F */
-      #logo-phonetic { font-size:30px; }
-      #logo-orthographic { font-size:35px; font-weight:bold; }
+      html, body { height:100%; }
+      body { padding:40px; background-color:#FFEB3B; font-family:"Bitcount Prop Double",sans-serif; color:#212121; }
+      .corner { position:fixed; bottom:0;  }
+      #navigation { left:0; margin-bottom:-16px; padding:0px 0px 0px 34px; font-size:52px; }
+      #navigation .one { color:#212121; }
+      #navigation .two { color:#98695B; }
+      #navigation > #logo { display:inline-block; height:52px; width:150px; }
+      #navigation > #logo > #orthographic { margin:0px 0px 0px 6px; }
+      #navigation > #logo > #ideographic { margin-top:4px; }
+      #navigation > #logo > #ideographic tr td { padding:1px 1px 1px 1px; line-height:12px; font-size:14px; }
+      #navigation > #categories { display:inline-block; padding-bottom:20px; }      
+      #links { right:0; padding:38px 30px 16px 32px; text-align:right; }
+      .link { margin-left:-5px; margin-right:-2px; font-size:40px; }
+      .link > a > i { color:#212121; }
+      .link:hover > a > i { color:#FFFFFF; text-shadow:0 0 2px #000000, 0 0 2px #000000; }
+      .noselect {
+        -webkit-touch-callout:none; /* iOS Safari */
+          -webkit-user-select:none; /* Safari */
+           -khtml-user-select:none; /* Konqueror HTML */
+             -moz-user-select:none; /* Old versions of Firefox */
+              -ms-user-select:none; /* Internet Explorer/Edge */
+                  user-select:none; /* Non-prefixed version */
+      }
+      @media all and (max-width:700px) {
+        #logo { padding:38px 42px 16px 34px; font-size:36px;  }
+        #links { font-size:26px; }
+      }
     </style>
     <script>
       var favIcon = "iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD8GO2jAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAATPSURBVHjaYvz/PJyBlgAggJgYaAwAAojmFgAEEM0tAAggmlsAEEA0twAggFhQeP8ZEWzG/1SxACCAUH0ANxTTdKDdQMQIRqQAgABiQRfA43DmfxCrGBiZGP4RawFAALEQ75bnDz/t2MHEy/vLy0+Yi5ORyGAECCDiLAAGDvO/nTsZL+7nZmTkkhJ7bOUiw/CXCRxoBOwACCAmokwHqxIS/MnE9J+T/S+PwF8G1j9E+hsggFgYGDkZ/n/HpwTkRqAd/1WUv741Yebk/ictJ4liPV5PAAQQI7Sww6oOFDL/GZj+MfwDhfifX4xv339jY2UXEGBhBAoygrX8BUc4SNl/kLK/YC2QNPCfmYGBAyCAmFASDzg0Dh48uWzVgR8//zGw/n397OvR7Y+fPvgAVMHCxiAuwyoo+h9oMtC8vXtPLFt28Nv3Pwzsfx89fLVw0YFHj14D2V8/MxzZ8+zSmUf//jIwMDECBBBqJHP+3bT2SFDa87//GPIu7Oho9F088duzR9IiEr+y6v/yCTAy/GQFKeP4s3/Habeoh//+M9Te3VdV5uwWefTm3V8ayodP7vTZuvbHmZ0SLMz/AxIfWrorAwQQE2po/n76/M9fsP8ePP7z88uvTx9YGRn/f/nM/OvHLySH/Hv5+sc/sJ8fP/vz+8e/+49+A9l3H/7+8vX7x09sQPbP30wfP4AYAAHE3FBqyvD/LwMwuIDoD4u2tjwXywsVBdbWKlMJOR5e3sdAc6xc3qloizKCohoY9CBlSspybIwv1JVYqwoMJGT4NGVfc3L8r84RNLdUFRP68PnjHw3DLw6+Yuxs7AABqCZzAwBAEAYiiEO6/xZCFHwKK0iRIjkIyJ0K3AiAtv9qd5RhpFEkpxyeUyRlVOwTWu9XG0oNzvyMZ5m8BBATAzP7999/jxw9sX3noY9ffoJim/UfCDH9Byp78+bbhdMPX7/6/o/p39dv/y6dvn/zyoPffxl//f97+sz5nbuPvP/yE5hYXr36evHUw1evv4LsYgS7gvEfyChGNoAAAlrw7+7Nu6kVTxOKX+3edZyB5T/DL0YQAqbAv4zbVnzbNE9s05Jvf38zXT71aMN8yY2LRN+//vTy2duY/HuROS+2bTkCNGbL4u8b5ooByd8/QEmH4T84yQJt+/8dIICYGNh/rthw//b93+8//Zuz4hOiFGP69+71p5vnef78Ybx3jfv9y893r/F8/8b85gXbk7ufDx+9cOcBMEr/rd3x5cu7P/dv8vz9y3D3Ku/rp69A8YQEAAKIieEnR1yElr4mm5gwc068ACi/QMAfJmFxXgPrjywsDBpGX4UkeTQNPnLz/JGQ/aGkKeTkaKavxSbEzxwbyMcjxKym+xlYwmoYfBKTFWf4hxKRAAHE+P9FAgPrt++f/n3//ktInAMUOEi2//vD+P7NN0ERbiaWv8AYe//mBxs7GzcfKEH9+Prv24+fQsLAkobh98//b5+/F5YUZGVnAOVtpEIBIIDAFvz7AcrfoPSHrcBgAqeJv+AiDxiBQHV/wW6Ea4GwQSUKWBmqCQABxIKcIhFy/5GK+7/MSGqY0RIxVA2QDQkZDPcBBBALqChlZMBXr1FWOQMEEM1bFQABRHMLAAKI5hYABBDNLQAIIJpbABBgACd2/saHFh8iAAAAAElFTkSuQmCC";
@@ -35,63 +46,67 @@
       newLink.type = 'image/x-icon';
       newLink.href = 'data:image/png;base64,'+favIcon;
       docHead.appendChild(newLink);
-      
-      function init() {
-        $("#logo-phonetic").hide();
-        $("#logo-orthographic").hide();
-        $("#logo-ideographic").show();
-        $("#logo").hover(function() {
-          $("#logo-orthographic").toggle();
-          $("#logo-ideographic").toggle();
+      window.onload = (event) => {
+        const logo = document.getElementById("logo");
+        const orth = document.getElementById("orthographic");
+        const ideo = document.getElementById("ideographic");
+        logo.addEventListener("mouseenter", (e) => {
+          orth.style.display = "block";
+          ideo.style.display = "none";
         });
-      }
+        logo.addEventListener("mouseleave", (e) => {
+          orth.style.display = "none";
+          ideo.style.display = "block";
+        });
+      };
+    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YHLCB9H700"></script>
+    <script>
+      window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date()); gtag('config', 'G-YHLCB9H700');
     </script>
   </head>
-  <body onload="init();">
-    <div>
-      <h1>
-        <div id="logo" style="display:inline-block;">
-          <span id="logo-orthographic">
-              <span class="one">r</span><span class="two">e</span><span class="two">i</span><span class="one">t</span><span class="two">y</span>
-          </span>
-          <span id="logo-phonetic">
-              <span class="one"><b>r</b></span><span class="two"><b>ā</b></span><span style="color:#DFCA4C;">&middot;</span><span class="two">ə</span><span style="color:#DFCA4C;">&middot;</span><span class="one">t</span><span class="two">ē</span>
-          </span>
-          <table id="logo-ideographic">
-            <tr>
-                <td></td><td></td><td></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-                <td></td><td></td><td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-                <td></td>
-                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-            </tr>
-            <tr>
-                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
-                <td></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
-                <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
-                <td></td>
-            </tr>
-          </table>
-        </div>
-        <div style="display:inline-block;">
-          <span class="sep" style="color:#DFCA4C;">|</span>
-          <a href="https://github.com/reity"><i class="fab fa-github"></i></a>
-          <span class="sep" style="color:#DFCA4C;">|</span>
-          <a href="https://medium.com/reity-llc"><i class="fab fa-medium"></i></a>
-          <span class="sep" style="color:#DFCA4C;">|</span>
-          <a href="https://www.linkedin.com/company/reity"><i class="fab fa-linkedin"></i></a>
-        </div>
-      </h1>
+  <body>
+    <div id="navigation" class="corner noselect">
+      <div id="logo">
+        <span id="orthographic" style="display:none;">
+          <span class="one">r</span><span class="two">e</span><span class="two">i</span><span class="one">t</span><span class="two">y</span>
+        </span>
+        <table id="ideographic" style="margin-bottom:1px;">
+          <tr>
+            <td></td><td></td><td></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            <td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            <td></td>
+            <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+          </tr>
+          <tr>
+            <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+            <td></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="one fa fa-circle" aria-hidden="true"></i></td>
+            <td><i class="two fa fa-circle" aria-hidden="true"></i></td>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div id="categories">
+        <span class="link"><a href="https://reity.org"><i class="fa-regular fa-keyboard"></i></a></span>
+        <span class="link"><a href="https://reity.gg"><i class="fa-solid fa-gamepad"></i></a></span>
+      </div>
+    </div>
+    <div id="links" class="corner noselect">
+      <span class="link"><a href="https://github.com/reity"><i class="fa-brands fa-github"></i></a></span>
+      <span class="link"><a href="https://medium.com/reity-llc"><i class="fa-brands fa-medium"></i></a></span>
+      <span class="link"><a href="https://www.linkedin.com/company/reity"><i class="fa-brands fa-linkedin"></i></a></span>
     </div>
   </body>
 </html>
